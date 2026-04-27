@@ -180,7 +180,7 @@ textarea:focus{border-color:var(--red-m);}
 </div>
 
 <script>
-const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw9RSyx0CjyNce92xmE12O2NTJU8-4cP6UpFYgzAX9DsJyIaneFcubueZGYJp19lACR/exec';
+const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbxDu2-TPfSpuWqnuYIg7rjdXyqjTl2qemAwuR-pGw6_CXMfnEdQX1LREqtTNZ0uldpK/exec';
 const STORAGE_KEY = 'dcm_fiabilidad_v1';
 const T_PREGUNTA = 40;
 const T_TOTAL_MAX = 600;
@@ -271,6 +271,12 @@ function tiempoAgotado() {
 
 function pararTimer() { clearInterval(timerInterval); }
 
+async function getScript(params) {
+  const url = URL_SCRIPT + '?' + Object.entries(params).map(([k,v]) => k+'='+encodeURIComponent(v)).join('&');
+  const res = await fetch(url, {mode:'cors'});
+  return await res.json();
+}
+
 async function postScript(payload) {
   const res = await fetch(URL_SCRIPT, {
     method: 'POST',
@@ -305,9 +311,9 @@ async function startTest() {
   const local = getLocal(e);
   if (local && local.aprobado) { showCompletado(n, local); return; }
 
-  // 2. Verificar email via POST
+  // 2. Verificar email via GET (funciona desde GitHub Pages sin CORS)
   try {
-    const json = await postScript({action:'verificar', email:e});
+    const json = await getScript({action:'verificar', email:e});
     if (!json.verificado) {
       badge.className='vbadge fail';
       badge.innerHTML='✕ Email no registrado en De Cero a Motorsport';
@@ -315,8 +321,8 @@ async function startTest() {
       resetBtn(); return;
     }
 
-    // 3. Comprobar si ya aprobó via POST
-    const json2 = await postScript({action:'yacompletado', email:e});
+    // 3. Comprobar si ya aprobó via GET
+    const json2 = await getScript({action:'yacompletado', email:e});
     if (json2.ok && json2.completado && json2.resultado) {
       setLocal(e, {...json2.resultado, aprobado:true});
       showCompletado(n, json2.resultado); return;
