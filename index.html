@@ -331,8 +331,10 @@ async function startTest() {
   } catch(err) {
     console.error('Error verificando:', err);
     badge.className='vbadge fail';
-    badge.innerHTML='⚠ No se pudo verificar. Continúa bajo tu responsabilidad.';
+    badge.innerHTML='⚠ Error de conexión. Por favor inténtalo de nuevo en unos segundos.';
     badge.style.display='flex';
+    resetBtn();
+    return; // No dejar continuar si falla la verificación
   }
 
   alumno={nombre:n, apellidos:a, email:e};
