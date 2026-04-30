@@ -205,6 +205,8 @@ const BANCO = [
 
 
 
+const PREGUNTA_ABIERTA = {id:35,t:'open',q:'Un equipo detecta en los datos que el coche sufre subviraje pronunciado en la entrada de curvas rápidas, pero sobreviraje en la salida de curvas lentas. Considerando los sistemas analizados en el módulo 5 (chasis, frenos, neumáticos y aerodinámica), ¿qué hipótesis de causas plantearías y qué modificaciones de setup o verificaciones de datos priorizarías? Justifica tu respuesta.',f:'Respuesta libre — no puntúa pero se registra.'};
+
 let alumno={},resp={},qActual=0,QS=[],tInt=null,tR=T_P,tT=T_MAX;
 
 function prepQ(){const m=[...BANCO];for(let i=m.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[m[i],m[j]]=[m[j],m[i]];}return[...m.slice(0,14),PREGUNTA_ABIERTA];}
