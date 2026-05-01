@@ -138,7 +138,8 @@ textarea:focus{border-color:var(--red-m);}
       <h1>Análisis de<br><em>Fiabilidad</em></h1>
       <div class="pills">
         <span class="pill">15 preguntas</span>
-        <span class="pill">Hasta 35 puntos</span>
+        <span class="pill">Curso 50 pts</span>
+        <span class="pill">Test hasta 35 pts</span>
         <span class="pill">~10 minutos</span>
       </div>
     </div>
@@ -180,8 +181,9 @@ textarea:focus{border-color:var(--red-m);}
 </div>
 
 <script>
-const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzG7bJyaarGnTecml_oDZLDA1A-ZhURn8bmRvlmmIQyYB0AhhJyBAU4l92_lpJILQjB/exec';
+const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbykfqbuHggUKq_NrQHIZ5R2n7yI8bM1lvhZAl6ZKG0Iy9S5ArZN3JXTCMu-G0X8njCT/exec';
 const STORAGE_KEY = 'dcm_fiabilidad_v1';
+const CURSO = 'Análisis de Fiabilidad';
 const T_PREGUNTA = 40;
 const T_TOTAL_MAX = 600;
 
@@ -346,7 +348,7 @@ async function startTest() {
     }
 
     // 3. Comprobar si ya aprobó via GET
-    const json2 = await getScript({action:'yacompletado', email:e});
+    const json2 = await getScript({action:'yacompletado', email:e, curso:encodeURIComponent(CURSO)});
     if (json2.ok && json2.completado && json2.resultado) {
       setLocal(e, {...json2.resultado, aprobado:true});
       showCompletado(n, json2.resultado); return;
