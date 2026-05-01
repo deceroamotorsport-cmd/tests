@@ -115,6 +115,7 @@ textarea:focus{border-color:var(--red-m)}
 .cpct{font-family:"DM Serif Display",serif;font-size:48px;color:#2d6e2d;line-height:1}
 .cpts{font-size:13px;color:#2d6e2d;margin-top:4px}
 </style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
 </head>
 <body>
 <div class="bar-top" id="barTop"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
@@ -294,7 +295,7 @@ function renderQ(idx){
   const q=QS[idx],L=['A','B','C','D'],isLast=idx===QS.length-1;
   const badge=q.t==='mc'||q.t==='img'?'<span class="qt tmc">Opción múltiple</span>':q.t==='tf'?'<span class="qt ttf">Verdadero / Falso</span>':'<span class="qt top">Reflexión</span>';
   const timerHTML=isLast?'':'<div class="twrap" id="tW"><div class="tbg"><div class="tbar" id="tBar" style="width:100%"></div></div><span class="tnum" id="tNum">'+T_P+'s</span></div>';
-  const imgHTML=q.img?'<img src="data:image/jpeg;base64,'+resolveImg(q.img)+'" class="qimg" alt="Gráfica del test">':'';
+  const _imgSrc=q.img?resolveImg(q.img):'';const imgHTML=_imgSrc?'<img src="data:image/jpeg;base64,'+_imgSrc+'" class="qimg" alt="Gráfica del test">':'';
   let body='';
   if(q.t==='mc'||q.t==='tf'||q.t==='img'){body='<div class="opts">'+q.o.map((o,i)=>'<div class="opt" id="o'+idx+'_'+i+'" onclick="selOpt('+idx+','+i+')"><div class="oletter">'+(q.t==='tf'?(i===0?'V':'F'):L[i])+'</div><div class="otext">'+o+'</div></div>').join('')+'</div><div class="fb" id="fb'+idx+'"></div>';}
   else{body='<textarea id="ta'+idx+'" placeholder="Escribe tu reflexión aquí..."></textarea><p class="onote">Esta pregunta no puntúa. Tu respuesta queda registrada.</p>';}
