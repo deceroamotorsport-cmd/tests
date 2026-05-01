@@ -115,7 +115,7 @@ textarea:focus{border-color:var(--red-m)}
 .cpct{font-family:"DM Serif Display",serif;font-size:48px;color:#2d6e2d;line-height:1}
 .cpts{font-size:13px;color:#2d6e2d;margin-top:4px}
 </style>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏁</text></svg>">
+<link rel="icon" href="data:image/x-icon;base64,AAABAAEAAQEAAAEAGAAoAAAAFgAAACgAAAABAAAAAgAAAAEAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
 </head>
 <body>
 <div class="bar-top" id="barTop"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
@@ -295,11 +295,12 @@ function renderQ(idx){
   const q=QS[idx],L=['A','B','C','D'],isLast=idx===QS.length-1;
   const badge=q.t==='mc'||q.t==='img'?'<span class="qt tmc">Opción múltiple</span>':q.t==='tf'?'<span class="qt ttf">Verdadero / Falso</span>':'<span class="qt top">Reflexión</span>';
   const timerHTML=isLast?'':'<div class="twrap" id="tW"><div class="tbg"><div class="tbar" id="tBar" style="width:100%"></div></div><span class="tnum" id="tNum">'+T_P+'s</span></div>';
-  const _imgSrc=q.img?resolveImg(q.img):'';const imgHTML=_imgSrc?'<img src="data:image/jpeg;base64,'+_imgSrc+'" class="qimg" alt="Gráfica del test">':'';
+  const _imgSrc=q.img?resolveImg(q.img):'';const imgHTML=_imgSrc?'<div id="qImgHolder_'+idx+'"></div>':'';
   let body='';
   if(q.t==='mc'||q.t==='tf'||q.t==='img'){body='<div class="opts">'+q.o.map((o,i)=>'<div class="opt" id="o'+idx+'_'+i+'" onclick="selOpt('+idx+','+i+')"><div class="oletter">'+(q.t==='tf'?(i===0?'V':'F'):L[i])+'</div><div class="otext">'+o+'</div></div>').join('')+'</div><div class="fb" id="fb'+idx+'"></div>';}
   else{body='<textarea id="ta'+idx+'" placeholder="Escribe tu reflexión aquí..."></textarea><p class="onote">Esta pregunta no puntúa. Tu respuesta queda registrada.</p>';}
   document.getElementById('qC').innerHTML='<div class="qcard"><div class="qm"><span class="qn">Pregunta '+(idx+1)+' / '+QS.length+'</span>'+badge+'</div>'+timerHTML+'<div class="qtx">'+q.q+'</div>'+imgHTML+body+'<div class="qnav"><button class="btn bp" id="bn'+idx+'" onclick="nextQ('+idx+')" '+(q.t!=='open'&&q.t!=='img'?'disabled':'')+' style="width:auto;padding:12px 24px;font-size:14px">'+(isLast?'Ver resultados':'Siguiente')+' →</button></div></div>';
+  if(_imgSrc){const _h=document.getElementById('qImgHolder_'+idx);if(_h){const _i=new Image();_i.className='qimg';_i.alt='Gráfica del test';_i.src='data:image/jpeg;base64,'+_imgSrc;_h.replaceWith(_i);}}
 }
 
 function selOpt(qi,oi){
