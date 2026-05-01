@@ -126,7 +126,8 @@ textarea:focus{border-color:var(--red-m)}
       <h1>Comparativa<br><em>de Pilotos</em></h1>
       <div class="pills">
         <span class="pill">15 preguntas</span>
-        <span class="pill">Hasta 35 puntos</span>
+        <span class="pill">Curso 50 pts</span>
+        <span class="pill">Test hasta 35 pts</span>
         <span class="pill">~10 minutos</span>
       </div>
     </div>
@@ -159,7 +160,7 @@ textarea:focus{border-color:var(--red-m)}
 </div>
 <div class="screen" id="sR"><div class="page"><div class="rwrap" id="rW"></div></div></div>
 <script>
-const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbzG7bJyaarGnTecml_oDZLDA1A-ZhURn8bmRvlmmIQyYB0AhhJyBAU4l92_lpJILQjB/exec';
+const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbykfqbuHggUKq_NrQHIZ5R2n7yI8bM1lvhZAl6ZKG0Iy9S5ArZN3JXTCMu-G0X8njCT/exec';
 const STORAGE_KEY = 'dcm_comparativa_pilotos_v1';
 const CURSO = 'Comparativa de Pilotos';
 const T_P=40, T_MAX=600;
@@ -257,7 +258,7 @@ async function startTest(){
   try{
     const j1=await getScriptJSONP({action:'verificar',email:e});
     if(!j1.verificado){badge.className='vb fail';badge.innerHTML='✕ Email no registrado en De Cero a Motorsport';badge.style.display='flex';resetBtn();return;}
-    const j2=await getScriptJSONP({action:'yacompletado',email:e,curso:encodeURIComponent(CURSO)});
+    const j2=await getScriptJSONP({action:'yacompletado',email:e,curso:CURSO});
     if(j2.ok&&j2.completado&&j2.resultado){setLocal(e,Object.assign({},j2.resultado,{aprobado:true}));showCompletado(n,j2.resultado);return;}
   }catch(err){
     console.error('Error verificando:',err);
