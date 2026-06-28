@@ -130,12 +130,12 @@ input::placeholder{color:var(--light)}
 @keyframes sp{to{transform:rotate(360deg)}}
 
 /* ── AYUDA / SISTEMA DE PUNTOS ── */
-.helpbanner{display:flex;align-items:center;gap:15px;width:100%;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:18px 22px;cursor:pointer;font-family:"DM Sans",sans-serif;text-align:left;transition:all .15s;box-shadow:0 2px 16px rgba(0,0,0,.04)}
-.helpbanner:hover{border-color:var(--red-m);background:var(--red-p)}
-.hb-ic{width:44px;height:44px;border-radius:50%;background:var(--red-p);color:var(--red);font-family:"DM Serif Display",serif;font-size:25px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.helpbanner:hover .hb-ic{background:var(--white)}
-.hb-tx{flex:1;font-size:16px;font-weight:500;color:var(--text);line-height:1.35}
-.hb-ar{color:var(--red);font-size:18px;flex-shrink:0}
+.helpbanner{display:flex;align-items:center;gap:16px;width:100%;background:linear-gradient(120deg,#E8243C,#ff5a6e);border:none;border-radius:var(--r);padding:20px 24px;cursor:pointer;font-family:"DM Sans",sans-serif;text-align:left;transition:transform .15s,box-shadow .15s;box-shadow:0 6px 20px rgba(232,36,60,.28)}
+.helpbanner:hover{transform:translateY(-2px);box-shadow:0 11px 28px rgba(232,36,60,.38)}
+.hb-ic{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font-family:"DM Serif Display",serif;font-size:29px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hb-tx{flex:1;font-size:clamp(17px,3.6vw,21px);font-weight:600;color:#fff;line-height:1.22}
+.hb-tx small{display:block;font-size:12.5px;font-weight:400;color:rgba(255,255,255,.88);margin-top:4px;letter-spacing:.01em}
+.hb-ar{color:#fff;font-size:23px;flex-shrink:0}
 .helpwrap{width:100%;max-width:1080px;display:flex;flex-direction:column;gap:18px}
 .helpback{align-self:flex-start;width:auto;padding:10px 18px}
 .helphd{text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:2px}
@@ -160,13 +160,19 @@ input::placeholder{color:var(--light)}
 .he-i{font-size:20px;flex-shrink:0}
 .he-t{font-size:13px;color:var(--muted);line-height:1.5}
 .he-t b{color:var(--text)}
-.hrew{display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid var(--border)}
-.hrew:last-child{border-bottom:none;padding-bottom:0}
-.hrew-ic{width:42px;height:42px;border-radius:11px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
+.hrew{display:flex;align-items:center;gap:15px;padding:17px;border:1.5px solid var(--border);border-radius:var(--rs);background:var(--bg);margin-bottom:11px}
+.hrew:last-child{margin-bottom:0}
+.hrew-ic{width:54px;height:54px;border-radius:13px;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:27px;flex-shrink:0}
 .hrew-m{flex:1;min-width:0}
-.hrew-tit{font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px}
-.hrew-thr{font-size:11px;font-weight:600;color:var(--red);background:var(--red-p);border-radius:20px;padding:2px 9px}
-.hrew-desc{font-size:12.5px;color:var(--muted);line-height:1.45}
+.hrew-tit{font-size:16.5px;font-weight:600;display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:4px}
+.hrew-thr{font-size:12px;font-weight:600;color:var(--red);background:var(--red-p);border-radius:20px;padding:3px 10px}
+.hrew-desc{font-size:13.5px;color:var(--muted);line-height:1.5}
+.ptbl{width:100%;border-collapse:collapse;margin-bottom:6px}
+.ptbl td{font-size:13px;padding:9px 0;border-bottom:1px solid var(--border);color:var(--muted);line-height:1.35}
+.ptbl td.v{text-align:right;font-weight:600;color:var(--text);white-space:nowrap;padding-left:10px}
+.ptbl tr:last-child td{border-bottom:none}
+.ptbl tr.tot td{font-weight:600;color:var(--text);border-top:1.5px solid var(--border)}
+.ptnote{font-size:12px;color:var(--light);font-style:italic;margin:2px 0 18px}
 @media(min-width:760px){.helpcols{grid-template-columns:1fr 1fr}}
 
 /* ══ ESCRITORIO / TABLET ANCHO: layout horizontal a dos columnas ══ */
@@ -235,27 +241,39 @@ input::placeholder{color:var(--light)}
       <!-- ── Columna SKOOL ── -->
       <div class="helpcol">
         <span class="hctag skool">💬 Puntos de Skool</span>
-        <p class="hclead">Sirven para ir <b>desbloqueando cosas dentro de la comunidad</b>. Vives dentro de Skool y subes de nivel según tu actividad. Cada nivel abre nuevo contenido:</p>
-        <div class="snivel"><div class="snnum">1</div><div><div class="sntit">Bienvenida</div><div class="sndesc">Entras en Skool y empiezas el onboarding («Empieza aquí»). Al completar el primer paso subes al Nivel 2.</div></div></div>
-        <div class="snivel"><div class="snnum">2</div><div><div class="sntit">Acceso al contenido</div><div class="sndesc">Desbloqueas entrevistas, masterclasses, Cutting Engineers <span class="conf">(por confirmar el nombre)</span>, la newsletter, las charlas y todos los cursos de introducción.</div></div></div>
-        <div class="snivel"><div class="snnum">3</div><div><div class="sntit">Directos</div><div class="sndesc">Desbloqueas los directos de la comunidad.</div></div></div>
-        <div class="snivel"><div class="snnum">4</div><div><div class="sntit">Trabajos</div><div class="sndesc">Desbloqueas los trabajos prácticos.</div></div></div>
-        <div class="snivel"><div class="snnum">5</div><div><div class="sntit">Recursos de Jonathan y Matías</div><div class="sndesc">Desbloqueas los recursos exclusivos de Jonathan y Matías.</div></div></div>
-        <div class="snivel"><div class="snnum">6</div><div><div class="sntit">Cursos de Jonathan y Matías <span class="conf">(por confirmar)</span></div><div class="sndesc">Desbloqueas los cursos completos de Jonathan y Matías.</div></div></div>
+        <p class="hclead">Sirven para ir <b>desbloqueando cosas dentro de la comunidad</b>. Subes de nivel según tu actividad en Skool y cada nivel abre nuevo contenido:</p>
+        <div class="snivel"><div class="snnum">1</div><div><div class="sntit">Nivel 1 · Bienvenida</div><div class="sndesc">Entras en Skool y empiezas el onboarding («Empieza aquí»). Al completar el primer paso subes al Nivel 2.</div></div></div>
+        <div class="snivel"><div class="snnum">2</div><div><div class="sntit">Nivel 2 · Acceso al contenido</div><div class="sndesc">Desbloqueas Entrevistas, Masterclass, Newsletter, Quick Engineer, Charlas y todos los cursos de introducción (Introducción al Motorsport y demás).</div></div></div>
+        <div class="snivel"><div class="snnum">3</div><div><div class="sntit">Nivel 3 · Directos</div><div class="sndesc">Desbloqueas los directos de la comunidad.</div></div></div>
+        <div class="snivel"><div class="snnum">4</div><div><div class="sntit">Nivel 4 · Trabajos</div><div class="sndesc">Desbloqueas los trabajos prácticos.</div></div></div>
+        <div class="snivel"><div class="snnum">5</div><div><div class="sntit">Nivel 5 · Recursos de Jonathan y Matías</div><div class="sndesc">Desbloqueas los recursos exclusivos de Jonathan y Matías.</div></div></div>
       </div>
 
       <!-- ── Columna DE CERO A MOTORSPORT ── -->
       <div class="helpcol">
         <span class="hctag dcm">🏎️ Puntos de De Cero a Motorsport</span>
-        <p class="hclead">Son los puntos que ves en <b>este portal</b>. Se ganan completando <b>tests</b> y <b>trabajos</b>, y sirven para desbloquear experiencias dentro del programa.</p>
+        <p class="hclead">Son los puntos que ves en <b>este portal</b>. Se ganan completando <b>cursos/tests</b> y <b>trabajos</b>, y con ellos vas desbloqueando experiencias dentro del programa.</p>
 
-        <p class="hsub">Cómo se ganan</p>
-        <div class="hearn"><span class="he-i">🎯</span><span class="he-t"><b>Tests.</b> Cada test que superas suma puntos según tu nota: <b>60 pts</b> al aprobar (≥60%), <b>70 pts</b> con ≥80% y <b>85 pts</b> con un 100%.</span></div>
-        <div class="hearn"><span class="he-i">📝</span><span class="he-t"><b>Trabajos.</b> Cada trabajo completado suma puntos <span class="conf">(cantidad por confirmar)</span>.</span></div>
-        <p class="hclead" style="margin:2px 0 18px">Tu total = puntos de tests + puntos de trabajos. Con ese total vas desbloqueando los niveles:</p>
+        <p class="hsub">🎯 Por cada curso</p>
+        <table class="ptbl">
+          <tr><td>Completar un curso</td><td class="v">50 pts</td></tr>
+          <tr><td>Completar el test del curso</td><td class="v">+15 pts</td></tr>
+          <tr><td>Test con 100% de aciertos</td><td class="v">+20 pts</td></tr>
+          <tr class="tot"><td>Máximo por curso</td><td class="v">85 pts</td></tr>
+        </table>
 
-        <p class="hsub">Qué desbloqueas</p>
-        <div class="hrew"><div class="hrew-ic">🎮</div><div class="hrew-m"><div class="hrew-tit">Race Engineer Games <span class="hrew-thr">300 pts</span></div><div class="hrew-desc">Sesiones de sim racing en directo donde… <span class="conf">(descripción por completar — se cortó tu audio)</span></div></div></div>
+        <p class="hsub">📝 Por cada trabajo</p>
+        <table class="ptbl">
+          <tr><td>Entregado</td><td class="v">30 pts</td></tr>
+          <tr><td>Aprobado</td><td class="v">50 pts</td></tr>
+          <tr><td>Notable</td><td class="v">80 pts</td></tr>
+          <tr><td>Sobresaliente</td><td class="v">100 pts</td></tr>
+          <tr><td>Excelente</td><td class="v">110 pts</td></tr>
+        </table>
+        <p class="ptnote">12 trabajos en total · máximo 1.320 pts.</p>
+
+        <p class="hsub" style="font-size:13px;color:var(--text);margin-top:10px">🏆 Qué desbloqueas</p>
+        <div class="hrew"><div class="hrew-ic">🎮</div><div class="hrew-m"><div class="hrew-tit">Race Engineer Games <span class="hrew-thr">300 pts</span></div><div class="hrew-desc">Sesiones de sim racing en directo donde cada ingeniero, o grupo de ingenieros, guía a su piloto.</div></div></div>
         <div class="hrew"><div class="hrew-ic">🤝</div><div class="hrew-m"><div class="hrew-tit">One to One <span class="hrew-thr">1000 pts</span></div><div class="hrew-desc">Una sesión individual con Jonathan y Matías.</div></div></div>
         <div class="hrew"><div class="hrew-ic">🏁</div><div class="hrew-m"><div class="hrew-tit">Track Ready <span class="hrew-thr">2000 pts</span></div><div class="hrew-desc">La posibilidad de dar el salto a Track Ready.</div></div></div>
       </div>
@@ -411,7 +429,7 @@ function renderDash(d){
   // PANEL "RANKING"
   const rank=renderRanking(d.tabla);
 
-  const helpBanner='<button class="helpbanner" onclick="showHelp()"><span class="hb-ic">?</span><span class="hb-tx">¿Cómo funciona el sistema de puntos?</span><span class="hb-ar">→</span></button>';
+  const helpBanner='<button class="helpbanner" onclick="showHelp()"><span class="hb-ic">?</span><span class="hb-tx">¿Cómo funciona el sistema de puntos?<small>Niveles, recompensas y cómo subir</small></span><span class="hb-ar">→</span></button>';
 
   const html=hero+helpBanner
     +'<div class="tabs"><button class="tab active" id="tabP">Mi progreso</button>'
